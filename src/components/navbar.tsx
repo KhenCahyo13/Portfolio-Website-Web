@@ -110,7 +110,7 @@ export const Navbar = () => {
             )}
         >
             <Link
-                href="#home"
+                href="/"
                 className="font-heading text-lg font-semibold tracking-wide text-foreground"
             >
                 KHEN CAHYO

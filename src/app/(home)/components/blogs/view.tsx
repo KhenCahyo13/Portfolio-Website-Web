@@ -45,7 +45,7 @@ const BlogsView: FC<BlogsViewProps> = ({
                     <BlogsSkeleton />
                 ) : blogs.length > 0 ? (
                     blogs.map((blog) => {
-                        const slugPath = blog.slug?.current ? `/blog/${blog.slug.current}` : '#';
+                        const slugPath = blog.slug?.current ? `/blogs/${blog.slug.current}` : '#';
                         const coverUrl = blog.coverImage ? urlFor(blog.coverImage).width(640).height(360).url() : null;
 
                         return (

@@ -143,29 +143,6 @@ export const projectShowcase = [
     },
 ];
 
-export const articles = [
-    {
-        title: 'Shipping faster with fullstack pairing',
-        summary: 'How pairing across frontend and backend trimmed review cycles for a remote team.',
-        date: 'May 2024',
-        link: '/blog/fullstack-pairing',
-    },
-    {
-        title: 'Keeping design systems honest',
-        summary:
-            'A playbook for aligning codebases, tokens, and component libraries without slowing teams down.',
-        date: 'Mar 2024',
-        link: '/blog/design-systems',
-    },
-    {
-        title: 'Queues and workers without the chaos',
-        summary:
-            'Practical patterns for RabbitMQ + Redis setups that stay observable and maintainable.',
-        date: 'Jan 2024',
-        link: '/blog/queues',
-    },
-];
-
 export const sectionVariants = {
     hidden: {
         opacity: 0,
