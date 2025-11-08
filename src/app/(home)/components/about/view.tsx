@@ -21,12 +21,7 @@ const AboutView: FC = () => (
                 </Badge>
                 <h2 className="font-heading text-3xl text-foreground">Building calm, maintainable software for fast-moving teams.</h2>
                 <p className="text-sm text-muted-foreground md:text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus malesuada nunc id nisi iaculis, vel hendrerit ex ultrices. Integer consequat
-                    vulputate dolor sit amet finibus. In viverra mi in posuere sagittis. Pellentesque malesuada ullamcorper orci, vitae accumsan eros mollis nec.
-                </p>
-                <p className="text-sm text-muted-foreground md:text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit, turpis ut sodales efficitur, libero lectus placerat mauris, id finibus
-                    justo nisl eget odio.
+                    I focus on crafting software that balances speed, stability, and maintainability. My goal is to deliver solutions that scale smoothly while keeping development processes simple and sustainable. With a deep understanding of both frontend and backend systems, I help teams move faster without sacrificing quality.
                 </p>
             </div>
             <motion.div variants={staggerVariants} className="flex-1 grid items-stretch gap-4 sm:grid-cols-2">

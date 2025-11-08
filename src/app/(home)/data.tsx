@@ -22,19 +22,19 @@ export const heroHighlights = [
 export const focusTiles = [
     {
         title: "Fullstack delivery",
-        description: "Lead features from discovery to production across frontend and backend stacks.",
+        description: "Drive products from discovery to deployment across the entire stack — frontend, backend, and infrastructure.",
     },
     {
         title: "Team enablement",
-        description: "Mentor engineers, shape standards, and keep documentation actionable.",
+        description: "Mentor engineers, define technical standards, and maintain actionable documentation for continuous improvement.",
     },
     {
         title: "Reliable systems",
-        description: "Ship resilient services with Docker, Redis, and queues like RabbitMQ.",
+        description: "Build resilient services with Docker, Redis, and message queues like RabbitMQ to ensure uptime and performance.",
     },
     {
         title: "Product thinking",
-        description: "Balance speed and quality so releases stay aligned with business goals.",
+        description: "Balance technical decisions with business context — ensuring every release aligns with real product goals.",
     },
 ];
 
