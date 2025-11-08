@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import HomeView from "./components/view";
+import { FC } from 'react';
+import HomeView from './components/view';
 
 const Home: FC = () => {
-    return <HomeView />
+    return <HomeView />;
 };
 
 export default Home;

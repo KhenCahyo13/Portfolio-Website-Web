@@ -1,5 +1,5 @@
-import { FC } from "react";
-import CollaborationView from "./view";
+import { FC } from 'react';
+import CollaborationView from './view';
 
 const Collaboration: FC = () => {
     return <CollaborationView />;

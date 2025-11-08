@@ -1,11 +1,11 @@
-import { FC } from "react";
-import { motion } from "motion/react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import Image from "next/image";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { heroHighlights, itemVariants, sectionVariants, staggerVariants } from "../../data";
+import { FC } from 'react';
+import { motion } from 'motion/react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { heroHighlights, itemVariants, sectionVariants, staggerVariants } from '../../data';
 
 const HeroView: FC = () => (
     <motion.section
@@ -13,13 +13,16 @@ const HeroView: FC = () => (
         initial="hidden"
         animate="show"
         variants={sectionVariants}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
         className="border-b border-white/10 py-16"
     >
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-0 lg:flex-row lg:items-center">
             <motion.div variants={staggerVariants} className="flex-1 space-y-8">
                 <motion.div variants={itemVariants}>
-                    <Badge variant="outline" className="border-white/20 bg-white/5 uppercase tracking-[0.4em] text-[0.65rem] text-white">
+                    <Badge
+                        variant="outline"
+                        className="border-white/20 bg-white/5 uppercase tracking-[0.4em] text-[0.65rem] text-white"
+                    >
                         Fullstack Developer
                     </Badge>
                 </motion.div>
@@ -28,15 +31,22 @@ const HeroView: FC = () => (
                         Helping teams build reliable products end-to-end across web and mobile.
                     </h1>
                     <p className="max-w-2xl text-sm text-muted-foreground md:text-base">
-                        I&apos;m Khen Muhammad Cahyo—a fullstack developer with 3+ years of experience working as a frontend engineer, backend engineer, mentor, and engineer lead.
-                        I thrive in cross-functional squads where clear communication and hands-on shipping matter most.
+                        I&apos;m Khen Muhammad Cahyo—a fullstack developer with 3+ years of
+                        experience working as a frontend engineer, backend engineer, mentor, and
+                        engineer lead. I thrive in cross-functional squads where clear communication
+                        and hands-on shipping matter most.
                     </p>
                 </motion.div>
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
                     <Button asChild size="lg">
                         <Link href="/contact">Start a project</Link>
                     </Button>
-                    <Button asChild variant="outline" size="lg" className="border-white/30 text-foreground">
+                    <Button
+                        asChild
+                        variant="outline"
+                        size="lg"
+                        className="border-white/30 text-foreground"
+                    >
                         <Link href="#projects">View projects</Link>
                     </Button>
                 </motion.div>
@@ -45,7 +55,9 @@ const HeroView: FC = () => (
                         <motion.div key={label} variants={itemVariants}>
                             <Card className="h-full border-white/15 bg-white/5">
                                 <CardHeader className="px-4">
-                                    <CardTitle className="font-heading text-2xl text-foreground">{value}</CardTitle>
+                                    <CardTitle className="font-heading text-2xl text-foreground">
+                                        {value}
+                                    </CardTitle>
                                     <CardDescription className="uppercase tracking-[0.3em] text-[0.6rem] text-muted-foreground">
                                         {label}
                                     </CardDescription>

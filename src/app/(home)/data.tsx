@@ -1,167 +1,179 @@
-import StackIcon from "tech-stack-icons";
+import StackIcon from 'tech-stack-icons';
 
 export const heroHighlights = [
     {
-        label: "Years shipping",
-        value: "3+"
+        label: 'Years shipping',
+        value: '3+',
     },
     {
-        label: "Products launched",
-        value: "12"
+        label: 'Products launched',
+        value: '12',
     },
     {
-        label: "Teams supported",
-        value: "9"
+        label: 'Teams supported',
+        value: '9',
     },
     {
-        label: "Mentorship hours",
-        value: "150+"
+        label: 'Mentorship hours',
+        value: '150+',
     },
 ];
 
 export const focusTiles = [
     {
-        title: "Fullstack delivery",
-        description: "Drive products from discovery to deployment across the entire stack — frontend, backend, and infrastructure.",
+        title: 'Fullstack delivery',
+        description:
+            'Drive products from discovery to deployment across the entire stack — frontend, backend, and infrastructure.',
     },
     {
-        title: "Team enablement",
-        description: "Mentor engineers, define technical standards, and maintain actionable documentation for continuous improvement.",
+        title: 'Team enablement',
+        description:
+            'Mentor engineers, define technical standards, and maintain actionable documentation for continuous improvement.',
     },
     {
-        title: "Reliable systems",
-        description: "Build resilient services with Docker, Redis, and message queues like RabbitMQ to ensure uptime and performance.",
+        title: 'Reliable systems',
+        description:
+            'Build resilient services with Docker, Redis, and message queues like RabbitMQ to ensure uptime and performance.',
     },
     {
-        title: "Product thinking",
-        description: "Balance technical decisions with business context — ensuring every release aligns with real product goals.",
+        title: 'Product thinking',
+        description:
+            'Balance technical decisions with business context — ensuring every release aligns with real product goals.',
     },
 ];
 
 export const experienceTimeline = [
     {
-        company: "Freelance",
-        role: "Fullstack Developer",
-        period: "2022 — Present",
-        summary: "Building web and mobile products for startups, covering architecture, APIs, and polished UI delivery.",
+        company: 'Freelance',
+        role: 'Fullstack Developer',
+        period: '2022 — Present',
+        summary:
+            'Building web and mobile products for startups, covering architecture, APIs, and polished UI delivery.',
     },
     {
-        company: "Nova Labs",
-        role: "Engineer Lead",
-        period: "2021 — 2022",
-        summary: "Led a squad of frontend and backend engineers, rolled out code standards, and scaled deployments with Docker.",
+        company: 'Nova Labs',
+        role: 'Engineer Lead',
+        period: '2021 — 2022',
+        summary:
+            'Led a squad of frontend and backend engineers, rolled out code standards, and scaled deployments with Docker.',
     },
     {
-        company: "Pixel Forge",
-        role: "Frontend & Mentor",
-        period: "2020 — 2021",
-        summary: "Owned the React/Next.js stack, coached junior devs, and partnered closely with design for rapid releases.",
+        company: 'Pixel Forge',
+        role: 'Frontend & Mentor',
+        period: '2020 — 2021',
+        summary:
+            'Owned the React/Next.js stack, coached junior devs, and partnered closely with design for rapid releases.',
     },
 ];
 
 export const skills = [
     {
-        name: "TailwindCSS",
+        name: 'TailwindCSS',
         icon: <StackIcon name="tailwindcss" className="size-8" />,
-        level: "advanced"
+        level: 'advanced',
     },
     {
-        name: "Bootstrap",
+        name: 'Bootstrap',
         icon: <StackIcon name="bootstrap4" className="size-8" />,
-        level: "advanced"
+        level: 'advanced',
     },
     {
-        name: "NextJS",
+        name: 'NextJS',
         icon: <StackIcon name="nextjs2" className="size-8" />,
-        level: "advanced"
+        level: 'advanced',
     },
     {
-        name: "ReactJS",
+        name: 'ReactJS',
         icon: <StackIcon name="react" className="size-8" />,
-        level: "advanced"
+        level: 'advanced',
     },
     {
-        name: "React Native",
+        name: 'React Native',
         icon: <StackIcon name="react" className="size-8" />,
-        level: "intermediate"
+        level: 'intermediate',
     },
     {
-        name: "NestJS",
+        name: 'NestJS',
         icon: <StackIcon name="nestjs" className="size-8" />,
-        level: "intermediate"
+        level: 'intermediate',
     },
     {
-        name: "Laravel",
+        name: 'Laravel',
         icon: <StackIcon name="laravel" className="size-8" />,
-        level: "advanced"
+        level: 'advanced',
     },
     {
-        name: "Docker",
+        name: 'Docker',
         icon: <StackIcon name="docker" className="size-8" />,
-        level: "intermediate"
+        level: 'intermediate',
     },
     {
-        name: "Redis",
+        name: 'Redis',
         icon: <StackIcon name="redis" className="size-8" />,
-        level: "intermediate"
+        level: 'intermediate',
     },
     {
-        name: "RabbitMQ",
+        name: 'RabbitMQ',
         icon: null,
-        level: "beginner"
+        level: 'beginner',
     },
 ];
 
 export const projectShowcase = [
     {
-        name: "SprintBoard",
-        description: "End-to-end product planning tool with collaborative roadmaps, role-based access, and analytics.",
-        link: "/projects/sprintboard",
-        stack: ["Next.js", "NestJS", "Postgres"],
+        name: 'SprintBoard',
+        description:
+            'End-to-end product planning tool with collaborative roadmaps, role-based access, and analytics.',
+        link: '/projects/sprintboard',
+        stack: ['Next.js', 'NestJS', 'Postgres'],
     },
     {
-        name: "CargoHub",
-        description: "Logistics dashboard connecting partner APIs, background workers, and real-time notifications.",
-        link: "/projects/cargohub",
-        stack: ["Laravel", "Redis", "RabbitMQ"],
+        name: 'CargoHub',
+        description:
+            'Logistics dashboard connecting partner APIs, background workers, and real-time notifications.',
+        link: '/projects/cargohub',
+        stack: ['Laravel', 'Redis', 'RabbitMQ'],
     },
     {
-        name: "Kin Mobile",
-        description: "Cross-platform finance app with React Native, offline-first data, and secure auth flows.",
-        link: "/projects/kin-mobile",
-        stack: ["React Native", "NestJS", "Docker"],
+        name: 'Kin Mobile',
+        description:
+            'Cross-platform finance app with React Native, offline-first data, and secure auth flows.',
+        link: '/projects/kin-mobile',
+        stack: ['React Native', 'NestJS', 'Docker'],
     },
 ];
 
 export const articles = [
     {
-        title: "Shipping faster with fullstack pairing",
-        summary: "How pairing across frontend and backend trimmed review cycles for a remote team.",
-        date: "May 2024",
-        link: "/blog/fullstack-pairing",
+        title: 'Shipping faster with fullstack pairing',
+        summary: 'How pairing across frontend and backend trimmed review cycles for a remote team.',
+        date: 'May 2024',
+        link: '/blog/fullstack-pairing',
     },
     {
-        title: "Keeping design systems honest",
-        summary: "A playbook for aligning codebases, tokens, and component libraries without slowing teams down.",
-        date: "Mar 2024",
-        link: "/blog/design-systems",
+        title: 'Keeping design systems honest',
+        summary:
+            'A playbook for aligning codebases, tokens, and component libraries without slowing teams down.',
+        date: 'Mar 2024',
+        link: '/blog/design-systems',
     },
     {
-        title: "Queues and workers without the chaos",
-        summary: "Practical patterns for RabbitMQ + Redis setups that stay observable and maintainable.",
-        date: "Jan 2024",
-        link: "/blog/queues",
+        title: 'Queues and workers without the chaos',
+        summary:
+            'Practical patterns for RabbitMQ + Redis setups that stay observable and maintainable.',
+        date: 'Jan 2024',
+        link: '/blog/queues',
     },
 ];
 
 export const sectionVariants = {
     hidden: {
         opacity: 0,
-        y: 32
+        y: 32,
     },
     show: {
         opacity: 1,
-        y: 0
+        y: 0,
     },
 };
 
@@ -177,10 +189,10 @@ export const staggerVariants = {
 export const itemVariants = {
     hidden: {
         opacity: 0,
-        y: 18
+        y: 18,
     },
     show: {
         opacity: 1,
-        y: 0
+        y: 0,
     },
 };

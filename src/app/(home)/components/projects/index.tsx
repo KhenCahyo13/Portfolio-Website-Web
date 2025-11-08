@@ -1,5 +1,5 @@
-import { FC } from "react";
-import ProjectsView from "./view";
+import { FC } from 'react';
+import ProjectsView from './view';
 
 const Projects: FC = () => {
     return <ProjectsView />;
