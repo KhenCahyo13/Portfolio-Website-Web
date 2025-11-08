@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -39,9 +39,12 @@ const navItems = [
     },
 ];
 
+const getSectionId = (href: string) => href.replace('#', '') || 'home';
+
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState<string>(getSectionId(navItems[0].href));
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -49,6 +52,53 @@ export const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    useEffect(() => {
+        const sections = navItems
+            .map((item) => document.getElementById(getSectionId(item.href)))
+            .filter((el): el is HTMLElement => Boolean(el));
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            {
+                threshold: 0.35,
+            },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
+    }, []);
+
+    const renderNavLabel = (label: string, isActive: boolean) => (
+        <span
+            className={cn(
+                'relative inline-flex items-center justify-center px-3 py-1 text-xs uppercase tracking-[0.3em] transition-colors duration-200',
+                isActive ? 'text-primary' : 'text-muted-foreground',
+            )}
+        >
+            {isActive && (
+                <Fragment>
+                    <span className="pointer-events-none absolute inset-0 rounded border border-dashed border-primary/60" aria-hidden />
+                    <span className="pointer-events-none absolute -top-1 -left-1 h-2 w-2 border-l border-t border-primary" aria-hidden />
+                    <span className="pointer-events-none absolute -top-1 -right-1 h-2 w-2 border-r border-t border-primary" aria-hidden />
+                    <span className="pointer-events-none absolute -bottom-1 -left-1 h-2 w-2 border-l border-b border-primary" aria-hidden />
+                    <span className="pointer-events-none absolute -bottom-1 -right-1 h-2 w-2 border-r border-b border-primary" aria-hidden />
+                </Fragment>
+            )}
+            {label}
+        </span>
+    );
+
+    const handleNavClick = (href: string) => {
+        setIsOpen(false);
+        setActiveSection(getSectionId(href));
+    };
 
     return (
         <nav
@@ -61,7 +111,7 @@ export const Navbar = () => {
         >
             <Link
                 href="#home"
-                className="font-heading text-base font-semibold tracking-wide text-foreground"
+                className="font-heading text-lg font-semibold tracking-wide text-foreground"
             >
                 KHEN CAHYO
             </Link>
@@ -71,10 +121,13 @@ export const Navbar = () => {
                         <NavigationMenuItem key={label}>
                             <NavigationMenuLink
                                 asChild
-                                className={`${navigationMenuTriggerStyle()} bg-transparent px-2 py-1 text-current hover:text-primary`}
+                                className={cn(
+                                    navigationMenuTriggerStyle(),
+                                    'bg-transparent px-2 py-1 text-current hover:text-primary',
+                                )}
                                 data-index={index}
                             >
-                                <Link href={href}>{label}</Link>
+                                <Link href={href}>{renderNavLabel(label, activeSection === getSectionId(href))}</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                     ))}
@@ -120,10 +173,13 @@ export const Navbar = () => {
                     <Link
                         key={label}
                         href={href}
-                        className="rounded-lg px-3 py-2 text-foreground hover:bg-white/5 hover:text-primary"
-                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                            'rounded-lg px-3 py-2 hover:bg-white/5',
+                            activeSection === getSectionId(href) ? 'text-primary' : 'text-foreground',
+                        )}
+                        onClick={() => handleNavClick(href)}
                     >
-                        {label}
+                        {renderNavLabel(label, activeSection === getSectionId(href))}
                     </Link>
                 ))}
             </div>
