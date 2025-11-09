@@ -24,7 +24,7 @@ const BlogListView: FC<BlogListViewProps> = ({
     availableTags,
 }) => (
     <section className="border-b border-white/10 py-16">
-        <div className="mx-auto w-full max-w-6xl space-y-10 px-6 md:px-12">
+        <div className="mx-auto w-full max-w-6xl space-y-10">
             <motion.div variants={sectionVariants} initial="hidden" animate="show" className="flex flex-col gap-6">
                 <div className="space-y-3">
                     <Badge variant="outline" className="w-fit border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]">
@@ -71,7 +71,7 @@ const BlogListView: FC<BlogListViewProps> = ({
                 </div>
             </motion.div>
 
-            <motion.div variants={staggerVariants} initial={false} animate="show" className="grid gap-6 md:grid-cols-2">
+            <motion.div variants={staggerVariants} initial={false} animate="show" className="grid gap-6 md:grid-cols-3">
                 {isLoading && blogs.length === 0 ? (
                     <BlogListSkeleton />
                 ) : blogs.length > 0 ? (
@@ -89,11 +89,10 @@ const BlogListView: FC<BlogListViewProps> = ({
                                     )}
                                     <CardHeader className="space-y-3 px-4">
                                         <CardDescription className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                                            {formatDate(blog.publishedAt)}
-                                            {blog.readingTime ? ` • ${blog.readingTime} min read` : null}
+                                            {formatDate(blog.publishedAt)} {` • ${blog.readingTime} min read`}
                                         </CardDescription>
                                         <CardTitle className="text-2xl text-foreground">{blog.title}</CardTitle>
-                                        {blog.excerpt ? <CardDescription>{blog.excerpt}</CardDescription> : null}
+                                        <CardDescription>{blog.excerpt.slice(0, 90)}...</CardDescription>
                                         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">by {blog.author}</p>
                                         {blog.tags?.length ? (
                                             <div className="flex flex-wrap gap-2">

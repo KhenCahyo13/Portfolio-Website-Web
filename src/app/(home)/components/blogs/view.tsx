@@ -77,7 +77,7 @@ const BlogsView: FC<BlogsViewProps> = ({
                                             {formatDate(blog.publishedAt)} {` • ${blog.readingTime} min read`}
                                         </CardDescription>
                                         <CardTitle className="text-lg text-foreground">{blog.title}</CardTitle>
-                                        <CardDescription>{blog.excerpt}</CardDescription>
+                                        <CardDescription>{blog.excerpt.slice(0, 90)}...</CardDescription>
                                     </CardHeader>
                                     <CardContent className="flex flex-1 flex-col gap-4 px-4 pb-6">
                                         {blog.tags?.length ? (

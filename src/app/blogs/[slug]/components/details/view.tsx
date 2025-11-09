@@ -16,7 +16,7 @@ const BlogDetailsView: FC<BlogDetailsViewProps> = ({
     const coverUrl = useMemo(() => (blog.coverImage ? urlFor(blog.coverImage).width(1400).height(720).url() : null), [blog.coverImage]);
 
     return (
-        <section className="mx-auto w-full max-w-5xl space-y-10 px-6 py-16 md:px-12">
+        <section className="mx-auto w-full max-w-5xl space-y-10 py-16">
             <div className="space-y-5">
                 <Badge variant="outline" className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]">
                     Blog

@@ -53,4 +53,14 @@ export interface SanityRichImageBlock {
     };
 };
 
-export type SanityRichContent = Array<SanityRichBlock | SanityRichImageBlock>;
+export type SanityRichContentItem = SanityRichBlock | SanityRichImageBlock | SanityCodeBlock;
+
+export interface SanityCodeBlock {
+    _key: string;
+    _type: 'codeBlock';
+    code: string;
+    filename?: string;
+    language?: string;
+}
+
+export type SanityRichContent = SanityRichContentItem[];
