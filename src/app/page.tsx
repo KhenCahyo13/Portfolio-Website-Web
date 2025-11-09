@@ -1,3 +1,10 @@
-import Home from './(home)/page';
+'use client';
 
-export default Home;
+import { FC } from 'react';
+import HomeView from './(home)/components/view';
+
+const HomePage: FC = () => {
+    return <HomeView />;
+};
+
+export default HomePage;

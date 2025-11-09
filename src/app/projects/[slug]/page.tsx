@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
         title,
         description,
-        keywords: data?.techStack ?? siteConfig.keywords,
+        keywords: data?.techStack ? [...data.techStack] : [...siteConfig.keywords],
         alternates: {
             canonical: canonicalUrl,
         },
