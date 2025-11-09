@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { ImageZoom } from '@/components/ui/image-zoom';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 import { portableComponents } from '@/components/portable';
@@ -57,15 +58,20 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
             </Card>
 
             {project.gallery?.length ? (
-                <div className="grid gap-6 md:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-5">
                     {project.gallery.map((image) => {
-                        const src = urlFor(image).width(900).height(600).url();
+                        const src = urlFor(image).width(284).height(600).url();
                         return (
-                            <div key={image._key ?? src} className="overflow-hidden rounded-3xl border border-white/10">
-                                <Image src={src} alt={image.alt ?? project.title} width={900} height={600} className="h-full w-full object-cover" />
-                                {image.caption ? (
-                                    <p className="px-4 py-2 text-sm text-muted-foreground">{image.caption}</p>
-                                ) : null}
+                            <div key={image._key ?? src} className="overflow-hidden rounded-xl border border-white/10">
+                                <ImageZoom
+                                    className="block"
+                                    zoomImg={{
+                                        src: src,
+                                        alt: image.alt ?? project.title,
+                                    }}
+                                >
+                                    <Image src={src} alt={image.alt ?? project.title} width={900} height={600} className="h-full w-full object-cover" />
+                                </ImageZoom>
                             </div>
                         );
                     })}
