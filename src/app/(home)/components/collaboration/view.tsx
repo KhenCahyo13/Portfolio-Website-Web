@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 const CollaborationView: FC = () => (
     <motion.section
+        id='collaboration'
         variants={sectionVariants}
         initial="hidden"
         whileInView="show"

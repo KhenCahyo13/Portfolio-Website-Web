@@ -11,7 +11,7 @@ const ProjectDetailsSkeleton: FC = () => (
             <Skeleton className="h-10 w-3/4 rounded-2xl bg-white/20" />
             <Skeleton className="h-5 w-1/2 rounded-full bg-white/10" />
         </div>
-        <div className="relative overflow-hidden rounded-[32px] border border-white/10">
+        <div className="relative overflow-hidden rounded-4xl border border-white/10">
             <Skeleton className="h-80 w-full bg-white/5" />
         </div>
         <Card className="border-white/15 bg-white/5">

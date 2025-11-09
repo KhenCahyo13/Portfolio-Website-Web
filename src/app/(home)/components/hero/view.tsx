@@ -39,7 +39,7 @@ const HeroView: FC = () => (
                 </motion.div>
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
                     <Button asChild size="lg">
-                        <Link href="/contact">Start a project</Link>
+                        <Link href="#collaboration">Start a project</Link>
                     </Button>
                     <Button
                         asChild

@@ -45,7 +45,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
             </div>
 
             {heroUrl ? (
-                <div className="relative overflow-hidden rounded-[32px] border border-white/10">
+                <div className="relative overflow-hidden rounded-4xl border border-white/10">
                     <Image src={heroUrl} alt={project.title} width={1400} height={720} priority className="h-auto w-full object-cover" />
                 </div>
             ) : null}
