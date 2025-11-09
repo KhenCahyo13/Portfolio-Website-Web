@@ -7,62 +7,38 @@ export const heroHighlights = [
     },
     {
         label: 'Products launched',
-        value: '12',
+        value: '5+',
     },
     {
         label: 'Teams supported',
-        value: '9',
+        value: '10+',
     },
     {
         label: 'Mentorship hours',
-        value: '150+',
+        value: '100+',
     },
 ];
 
 export const focusTiles = [
     {
-        title: 'Fullstack delivery',
+        title: 'Fullstack Delivery',
         description:
             'Drive products from discovery to deployment across the entire stack — frontend, backend, and infrastructure.',
     },
     {
-        title: 'Team enablement',
+        title: 'Team Enablement',
         description:
             'Mentor engineers, define technical standards, and maintain actionable documentation for continuous improvement.',
     },
     {
-        title: 'Reliable systems',
+        title: 'Reliable Systems',
         description:
             'Build resilient services with Docker, Redis, and message queues like RabbitMQ to ensure uptime and performance.',
     },
     {
-        title: 'Product thinking',
+        title: 'Product Thinking',
         description:
             'Balance technical decisions with business context — ensuring every release aligns with real product goals.',
-    },
-];
-
-export const experienceTimeline = [
-    {
-        company: 'Freelance',
-        role: 'Fullstack Developer',
-        period: '2022 — Present',
-        summary:
-            'Building web and mobile products for startups, covering architecture, APIs, and polished UI delivery.',
-    },
-    {
-        company: 'Nova Labs',
-        role: 'Engineer Lead',
-        period: '2021 — 2022',
-        summary:
-            'Led a squad of frontend and backend engineers, rolled out code standards, and scaled deployments with Docker.',
-    },
-    {
-        company: 'Pixel Forge',
-        role: 'Frontend & Mentor',
-        period: '2020 — 2021',
-        summary:
-            'Owned the React/Next.js stack, coached junior devs, and partnered closely with design for rapid releases.',
     },
 ];
 
@@ -115,7 +91,17 @@ export const skills = [
     {
         name: 'RabbitMQ',
         icon: null,
-        level: 'beginner',
+        level: 'intermediate',
+    },
+    {
+        name: 'MySQL',
+        icon: <StackIcon name="mysql" className="size-8" />,
+        level: 'advanced',
+    },
+    {
+        name: 'PostgreSQL',
+        icon: <StackIcon name="postgresql" className="size-8" />,
+        level: 'intermediate',
     },
 ];
 

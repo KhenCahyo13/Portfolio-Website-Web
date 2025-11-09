@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@portabletext/react": "^5.0.0",
+        "@radix-ui/react-accordion": "^1.2.12",
         "@radix-ui/react-navigation-menu": "^1.2.14",
         "@radix-ui/react-slot": "^1.2.4",
         "@sanity/client": "^7.12.1",

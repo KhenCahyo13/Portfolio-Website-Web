@@ -10,3 +10,10 @@ export const formatDate = (dateString?: string) => {
         return dateString;
     }
 };
+
+export const formatPeriod = (startDate?: string, endDate?: string | null, isCurrent?: boolean) => {
+    const formatter = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' });
+    const start = startDate ? formatter.format(new Date(startDate)) : '';
+    const end = isCurrent ? 'Present' : endDate ? formatter.format(new Date(endDate)) : 'Finished';
+    return `${start} — ${end}`;
+};

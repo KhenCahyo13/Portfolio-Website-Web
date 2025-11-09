@@ -33,7 +33,7 @@ const SkillsView: FC = () => (
                             {skill.icon ? (
                                 skill.icon
                             ) : (
-                                <div className="flex size-10 items-center justify-center rounded-lg border border-dashed border-white/30 bg-white/10 text-lg text-muted-foreground text-center">
+                                <div className="flex size-10 items-center justify-center rounded-lg border border-dashed border-white/30 bg-white/10 text-lg text-muted-foreground text-center font-semibold">
                                     {skill.name.charAt(0)}
                                 </div>
                             )}
