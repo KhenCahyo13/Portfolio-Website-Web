@@ -2,17 +2,11 @@
 
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { Fragment, useEffect, useState } from 'react';
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    navigationMenuTriggerStyle,
-} from './ui/navigation-menu';
+import { Fragment, useEffect, useMemo, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Button } from './ui/button';
 
-const navItems = [
+const sectionNavItems = [
     {
         label: 'Home',
         href: '#home',
@@ -39,12 +33,19 @@ const navItems = [
     },
 ];
 
+const mainNavItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Blogs', href: '/blogs' },
+];
+
 const getSectionId = (href: string) => href.replace('#', '') || 'home';
 
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState<string>(getSectionId(navItems[0].href));
+    const [activeSection, setActiveSection] = useState<string>(getSectionId(sectionNavItems[0].href));
+    const pathname = usePathname();
+    const isHome = useMemo(() => pathname === '/', [pathname]);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -54,7 +55,9 @@ export const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        const sections = navItems
+        if (!isHome) return;
+
+        const sections = sectionNavItems
             .map((item) => document.getElementById(getSectionId(item.href)))
             .filter((el): el is HTMLElement => Boolean(el));
 
@@ -70,10 +73,9 @@ export const Navbar = () => {
                 threshold: 0.35,
             },
         );
-
         sections.forEach((section) => observer.observe(section));
         return () => observer.disconnect();
-    }, []);
+    }, [isHome]);
 
     const renderNavLabel = (label: string, isActive: boolean) => (
         <span
@@ -97,8 +99,12 @@ export const Navbar = () => {
 
     const handleNavClick = (href: string) => {
         setIsOpen(false);
-        setActiveSection(getSectionId(href));
+        if (isHome && href.startsWith('#')) {
+            setActiveSection(getSectionId(href));
+        }
     };
+
+    const navLinks = isHome ? sectionNavItems : mainNavItems;
 
     return (
         <nav
@@ -115,24 +121,18 @@ export const Navbar = () => {
             >
                 KHEN CAHYO
             </Link>
-            <NavigationMenu className="hidden md:flex">
-                <NavigationMenuList className="flex gap-4 text-sm uppercase tracking-[0.25em] text-muted-foreground">
-                    {navItems.map(({ label, href }, index) => (
-                        <NavigationMenuItem key={label}>
-                            <NavigationMenuLink
-                                asChild
-                                className={cn(
-                                    navigationMenuTriggerStyle(),
-                                    'bg-transparent px-2 py-1 text-current hover:text-primary',
-                                )}
-                                data-index={index}
-                            >
-                                <Link href={href}>{renderNavLabel(label, activeSection === getSectionId(href))}</Link>
-                            </NavigationMenuLink>
-                        </NavigationMenuItem>
-                    ))}
-                </NavigationMenuList>
-            </NavigationMenu>
+            <div className="hidden items-center gap-3 text-sm uppercase tracking-[0.25em] text-muted-foreground md:flex">
+                {navLinks.map(({ label, href }) => {
+                    const isActive = isHome
+                        ? activeSection === getSectionId(href)
+                        : pathname === href || (href !== '/' && pathname.startsWith(href));
+                    return (
+                        <Link key={label} href={href} onClick={() => handleNavClick(href)}>
+                            {renderNavLabel(label, isActive)}
+                        </Link>
+                    );
+                })}
+            </div>
             <Button
                 variant="ghost"
                 size="icon"
@@ -169,19 +169,24 @@ export const Navbar = () => {
                         : 'pointer-events-none opacity-0 -translate-y-2',
                 )}
             >
-                {navItems.map(({ label, href }) => (
-                    <Link
-                        key={label}
-                        href={href}
-                        className={cn(
-                            'rounded-lg px-3 py-2 hover:bg-white/5',
-                            activeSection === getSectionId(href) ? 'text-primary' : 'text-foreground',
-                        )}
-                        onClick={() => handleNavClick(href)}
-                    >
-                        {renderNavLabel(label, activeSection === getSectionId(href))}
-                    </Link>
-                ))}
+                {navLinks.map(({ label, href }) => {
+                    const isActive = isHome
+                        ? activeSection === getSectionId(href)
+                        : pathname === href || (href !== '/' && pathname.startsWith(href));
+                    return (
+                        <Link
+                            key={label}
+                            href={href}
+                            className={cn(
+                                'rounded-lg px-3 py-2 hover:bg-white/5',
+                                isActive ? 'text-primary' : 'text-foreground',
+                            )}
+                            onClick={() => handleNavClick(href)}
+                        >
+                            {renderNavLabel(label, isActive)}
+                        </Link>
+                    );
+                })}
             </div>
         </nav>
     );
