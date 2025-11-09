@@ -9,11 +9,17 @@ export const Footer: FC = () => (
                 Sanity
             </p>
             <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.3em]">
-                <Link href="https://github.com" className="hover:text-primary">
+                <Link href="https://www.linkedin.com/in/khencahyo13/" className="hover:text-primary" target='__blank'>
+                    LinkedIn
+                </Link>
+                <Link href="https://github.com/KhenCahyo13" className="hover:text-primary" target='__blank'>
                     GitHub
                 </Link>
-                <Link href="https://www.linkedin.com" className="hover:text-primary">
-                    LinkedIn
+                <Link href="https://www.youtube.com/@ngodingbarengkhen13" className="hover:text-primary" target='__blank'>
+                    YouTube
+                </Link>
+                <Link href="https://www.tiktok.com/@ngodingbarengkhen" className="hover:text-primary" target='__blank'>
+                    TikTok
                 </Link>
             </div>
         </div>

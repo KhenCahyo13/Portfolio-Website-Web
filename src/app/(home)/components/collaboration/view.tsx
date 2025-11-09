@@ -38,7 +38,7 @@ const CollaborationView: FC = () => (
                     size="lg"
                     className="border-white/30 text-foreground"
                 >
-                    <Link href="/contact">Download My Resume</Link>
+                    <Link href="/documents/KhenCahyo-CVATS.pdf" target='__blank'>Download My Resume</Link>
                 </Button>
             </div>
         </div>
