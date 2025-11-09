@@ -1,5 +1,9 @@
 export const blogListQuery = `
-*[_type == "blogs"] | order(publishedAt desc)[0...3] {
+*[_type == "blogs"
+   && (!defined($search) || $search == "" || title match $search)
+   && (!defined($tags) || count($tags) == 0 || count((tags[])[@ in $tags]) > 0)
+] 
+| order(publishedAt desc)[$offset...$offset + $limit - 1] {
   _id,
   title,
   slug,

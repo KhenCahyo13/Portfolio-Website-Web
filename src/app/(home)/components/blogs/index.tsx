@@ -15,7 +15,12 @@ const Blogs: FC = () => {
         const fetchBlogs = async () => {
             try {
                 setIsLoading(true);
-                const data = await client.fetch<BlogList[]>(blogListQuery);
+                const data = await client.fetch<BlogList[]>(blogListQuery, {
+                    offset: 0,
+                    limit: 3,
+                    search: '',
+                    tags: [],
+                });
                 if (mounted) {
                     setBlogs(data ?? []);
                 }

@@ -26,19 +26,28 @@ const BlogsView: FC<BlogsViewProps> = ({
         className="border-b border-white/10 py-16"
     >
         <div className="mx-auto w-full max-w-6xl space-y-8">
-            <div className="space-y-3">
-                <Badge
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div className="space-y-3">
+                    <Badge
+                        variant="outline"
+                        className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]"
+                    >
+                        Blogs
+                    </Badge>
+                    <h2 className="font-heading text-3xl text-foreground">
+                        Notes on process and craft.
+                    </h2>
+                    <p className="text-sm text-muted-foreground md:text-base">
+                        Sharing insights, tutorials, and stories from my journey as a developer.
+                    </p>
+                </div>
+                <Button
+                    asChild
                     variant="outline"
-                    className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]"
+                    className="w-full border-white/20 bg-transparent text-xs uppercase tracking-[0.3em] text-muted-foreground md:w-auto"
                 >
-                    Blogs
-                </Badge>
-                <h2 className="font-heading text-3xl text-foreground">
-                    Notes on process and craft.
-                </h2>
-                <p className="text-sm text-muted-foreground md:text-base">
-                    Sharing insights, tutorials, and stories from my journey as a developer.
-                </p>
+                    <Link href="/blogs">See all blogs →</Link>
+                </Button>
             </div>
             <motion.div variants={staggerVariants} className="grid gap-6 md:grid-cols-3">
                 {isLoading ? (
