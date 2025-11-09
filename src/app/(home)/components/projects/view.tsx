@@ -4,9 +4,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
-import { projectShowcase, itemVariants, sectionVariants, staggerVariants } from '../../data';
+import { itemVariants, sectionVariants, staggerVariants } from '../../data';
+import ProjectsSkeleton from './skeleton';
+import { ProjectsViewProps } from './types';
 
-const ProjectsView: FC = () => (
+const ProjectsView: FC<ProjectsViewProps> = ({ projects, isLoading }) => (
     <motion.section
         id="projects"
         variants={sectionVariants}
@@ -24,39 +26,57 @@ const ProjectsView: FC = () => (
                 >
                     Projects
                 </Badge>
-                <h2 className="font-heading text-3xl text-foreground">Selected work.</h2>
+                <h2 className="font-heading text-3xl text-foreground">Selected work and personal projects.</h2>
                 <p className="text-sm text-muted-foreground md:text-base">
                     Fullstack engagements that highlight my range.
                 </p>
             </div>
-            <motion.div variants={staggerVariants} className="grid gap-6 md:grid-cols-2">
-                {projectShowcase.map(({ name, description, stack, link }) => (
-                    <motion.div key={name} variants={itemVariants}>
-                        <Card className="h-full border-white/15 bg-white/5">
-                            <CardHeader className="px-4">
-                                <CardTitle className="text-2xl text-foreground">{name}</CardTitle>
-                                <CardDescription>{description}</CardDescription>
-                            </CardHeader>
-                            <CardContent className="px-4">
-                                <div className="flex flex-wrap gap-2">
-                                    {stack.map((tag) => (
-                                        <Badge
-                                            key={tag}
-                                            variant="outline"
-                                            className="border-white/20 bg-transparent text-xs text-muted-foreground"
-                                        >
-                                            {tag}
-                                        </Badge>
-                                    ))}
-                                </div>
-                                <Button asChild variant="link" className="mt-4 px-0 text-primary">
-                                    <Link href={link}>Dive into details →</Link>
-                                </Button>
-                            </CardContent>
-                        </Card>
-                    </motion.div>
-                ))}
-            </motion.div>
+            {isLoading ? (
+                <ProjectsSkeleton />
+            ) : projects.length > 0 ? (
+                <motion.div variants={staggerVariants} className="grid gap-6 md:grid-cols-2">
+                    {projects.map((project) => {
+                        const slugPath = project.slug?.current ? `/projects/${project.slug.current}` : '#';
+                        return (
+                            <motion.div key={project._id} variants={itemVariants}>
+                                <Card className="h-full border-white/15 bg-white/5">
+                                    <CardHeader className="px-4">
+                                        <CardTitle className="text-2xl text-foreground">{project.title}</CardTitle>
+                                        <CardDescription>{project.summary}</CardDescription>
+                                    </CardHeader>
+                                    <CardContent className="px-4">
+                                        {project.techStack?.length ? (
+                                            <div className="flex flex-wrap gap-2">
+                                                {project.techStack.slice(0, 4).map((tag) => (
+                                                    <Badge
+                                                        key={`${project._id}-${tag}`}
+                                                        variant="outline"
+                                                        className="border-white/20 bg-transparent text-xs text-muted-foreground"
+                                                    >
+                                                        {tag}
+                                                    </Badge>
+                                                ))}
+                                            </div>
+                                        ) : null}
+                                        <Button asChild variant="link" className="mt-4 px-0 text-primary" disabled={slugPath === '#'}>
+                                            <Link href={slugPath}>Dive into details →</Link>
+                                        </Button>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
+                        );
+                    })}
+                </motion.div>
+            ) : (
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center text-sm text-muted-foreground">
+                    Projects will be published here soon. Stay tuned!
+                </div>
+            )}
+            <div className="flex justify-center">
+                <Button asChild variant="outline" className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]">
+                    <Link href="/projects">See all projects →</Link>
+                </Button>
+            </div>
         </div>
     </motion.section>
 );

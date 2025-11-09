@@ -2,13 +2,20 @@ import { FC } from 'react';
 import { motion } from 'motion/react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { sectionVariants } from '../../data';
+import { itemVariants, sectionVariants } from '../../data';
 import { ExperiencesViewProps } from './types';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { PortableText } from '@portabletext/react';
 import { portableComponents } from '@/components/portable';
-import { formatPeriod } from '@/lib/datetime';
 import ExperiencesSkeleton from './skeleton';
+
+const formatPeriod = (start?: string, end?: string | null, current?: boolean) => {
+    if (!start) return '';
+    const formatter = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' });
+    const startLabel = formatter.format(new Date(start));
+    const endLabel = current ? 'Present' : end ? formatter.format(new Date(end)) : 'Finished';
+    return `${startLabel} — ${endLabel}`;
+};
 
 const ExperiencesView: FC<ExperiencesViewProps> = ({ experiences, isLoading }) => (
     <motion.section
@@ -40,57 +47,52 @@ const ExperiencesView: FC<ExperiencesViewProps> = ({ experiences, isLoading }) =
                 <ExperiencesSkeleton />
             ) : (
                 <Accordion type="multiple" className="space-y-4">
-                    {experiences.map((experience) => {
-                        const periodLabel = formatPeriod(
-                            experience.startDate,
-                            experience.endDate,
-                            experience.isCurrent,
-                        );
+                    {experiences.map((exp) => {
                         const metaPieces = [
-                            experience.company,
-                            experience.employmentType,
-                            experience.location,
-                            experience.isRemote ? 'Remote' : null,
+                            exp.company,
+                            exp.employmentType,
+                            exp.location,
+                            exp.isRemote ? 'Remote' : null,
                         ].filter(Boolean);
 
                         return (
-                            <AccordionItem key={experience._id} value={experience._id} className="border-none">
-                                <Card className="h-full border-white/15 bg-white/5">
+                            <AccordionItem key={exp._id} value={exp._id} className="border-none">
+                                <Card className="border-white/15 bg-white/5">
                                     <AccordionTrigger className="w-full px-4 py-0">
                                         <CardHeader className="flex w-full flex-col gap-2 px-0">
-                                            <CardTitle className="flex flex-col gap-2 text-xl text-foreground sm:flex-row sm:items-center sm:justify-between">
-                                                <span>{experience.role}</span>
+                                            <CardTitle className="flex flex-col gap-1 text-xl text-foreground sm:flex-row sm:items-center sm:justify-between">
+                                                <span>{exp.role}</span>
                                                 <span className="text-sm font-normal text-muted-foreground">
-                                                    {periodLabel}
+                                                    {formatPeriod(exp.startDate, exp.endDate, exp.isCurrent)}
                                                 </span>
                                             </CardTitle>
-                                            <CardDescription className="text-muted-foreground capitalize">
+                                            <CardDescription className="text-muted-foreground">
                                                 {metaPieces.join(' · ')}
                                             </CardDescription>
                                         </CardHeader>
                                     </AccordionTrigger>
                                     <AccordionContent className="px-0">
                                         <CardContent className="space-y-4 px-4 pb-6">
-                                            {experience.summary ? (
+                                            {exp.summary ? (
                                                 <div className="prose prose-invert max-w-none text-sm">
-                                                    <PortableText value={experience.summary} components={portableComponents} />
+                                                    <PortableText value={exp.summary} components={portableComponents} />
                                                 </div>
                                             ) : null}
-                                            {experience.highlights?.length ? (
-                                                <ul className="flex items-center flex-wrap gap-2 text-sm text-muted-foreground">
-                                                    {experience.highlights.map((highlight) => (
-                                                        <li key={highlight} className="flex items-start gap-1">
+                                            {exp.highlights?.length ? (
+                                                <ul className="space-y-2 text-sm text-muted-foreground">
+                                                    {exp.highlights.map((highlight) => (
+                                                        <li key={highlight} className="flex items-start gap-2">
                                                             <span className="mt-1 size-1 rounded-full bg-primary" />
                                                             <span>{highlight}</span>
                                                         </li>
                                                     ))}
                                                 </ul>
                                             ) : null}
-                                            {experience.techStack?.length ? (
+                                            {exp.techStack?.length ? (
                                                 <div className="flex flex-wrap gap-2">
-                                                    {experience.techStack.map((tech) => (
+                                                    {exp.techStack.map((tech) => (
                                                         <Badge
-                                                            key={`${experience._id}-${tech}`}
+                                                            key={`${exp._id}-${tech}`}
                                                             variant="outline"
                                                             className="border-white/10 bg-transparent text-xs text-muted-foreground"
                                                         >

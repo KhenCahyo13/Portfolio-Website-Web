@@ -35,13 +35,13 @@ const BlogListView: FC<BlogListViewProps> = ({
                         Thoughts on engineering leadership, product craft, and the pragmatic tools I use daily.
                     </p>
                 </div>
-                <div className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-4 md:flex-row md:items-center md:justify-between">
+                <div className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-4">
                     <input
                         type="text"
                         value={searchTerm}
                         onChange={(e) => onSearchChange(e.target.value)}
                         placeholder="Search by title..."
-                        className="w-full rounded-2xl border border-white/15 bg-transparent px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none md:max-w-sm"
+                        className="w-full rounded-2xl border border-white/15 bg-transparent px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
                     />
                     {availableTags.length ? (
                         <div className="flex flex-wrap gap-2">

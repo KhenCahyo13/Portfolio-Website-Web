@@ -35,6 +35,7 @@ const sectionNavItems = [
 
 const mainNavItems = [
     { label: 'Home', href: '/' },
+    { label: 'Projects', href: '/projects' },
     { label: 'Blogs', href: '/blogs' },
 ];
 

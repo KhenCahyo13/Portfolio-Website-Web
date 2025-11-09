@@ -1,7 +1,8 @@
 export interface SanityImage {
     _type: string;
+    _key?: string;
     alt: string;
-    caption: string;
+    caption?: string;
     asset: {
         _ref: string;
         _type: string;
