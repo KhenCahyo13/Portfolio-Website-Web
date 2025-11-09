@@ -14,22 +14,30 @@ import { urlFor } from '@/lib/sanity';
 import { ProjectDetailsViewProps } from './types';
 
 const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
-    const heroUrl = project.heroImage ? urlFor(project.heroImage).width(1400).height(720).url() : null;
+    const heroUrl = project.heroImage
+        ? urlFor(project.heroImage).width(1400).height(720).url()
+        : null;
 
     return (
         <section className="mx-auto w-full max-w-5xl space-y-10 px-6 py-16 md:px-12">
             <div className="space-y-5">
-                <Badge variant="outline" className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]">
+                <Badge
+                    variant="outline"
+                    className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]"
+                >
                     {project.status ? project.status.replace(/-/g, ' ') : 'Project'}
                 </Badge>
-                <h1 className="font-heading text-4xl leading-tight text-foreground md:text-5xl">{project.title}</h1>
+                <h1 className="font-heading text-4xl leading-tight text-foreground md:text-5xl">
+                    {project.title}
+                </h1>
                 <p className="text-base text-muted-foreground">{project.summary}</p>
                 <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
                     {project.role ? <span>{project.role}</span> : null}
                     {project.client ? <span>• {project.client}</span> : null}
                     {project.startDate ? (
                         <span>
-                            • {formatDate(project.startDate)} — {project.endDate ? formatDate(project.endDate) : 'Present'}
+                            • {formatDate(project.startDate)} —{' '}
+                            {project.endDate ? formatDate(project.endDate) : 'Present'}
                         </span>
                     ) : null}
                     {project.teamSize ? <span>• Team of {project.teamSize}</span> : null}
@@ -37,7 +45,11 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                 {project.techStack?.length ? (
                     <div className="flex flex-wrap gap-2">
                         {project.techStack.map((tech) => (
-                            <Badge key={tech} variant="outline" className="border-white/15 bg-transparent text-xs text-muted-foreground">
+                            <Badge
+                                key={tech}
+                                variant="outline"
+                                className="border-white/15 bg-transparent text-xs text-muted-foreground"
+                            >
                                 {tech}
                             </Badge>
                         ))}
@@ -47,7 +59,14 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
 
             {heroUrl ? (
                 <div className="relative overflow-hidden border rounded-xl border-white/10 md:rounded-4xl">
-                    <Image src={heroUrl} alt={project.title} width={1400} height={720} priority className="h-auto w-full object-cover" />
+                    <Image
+                        src={heroUrl}
+                        alt={project.title}
+                        width={1400}
+                        height={720}
+                        priority
+                        className="h-auto w-full object-cover"
+                    />
                 </div>
             ) : null}
 
@@ -62,7 +81,10 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                     {project.gallery.map((image) => {
                         const src = urlFor(image).width(284).height(600).url();
                         return (
-                            <div key={image._key ?? src} className="overflow-hidden rounded-xl border border-white/10">
+                            <div
+                                key={image._key ?? src}
+                                className="overflow-hidden rounded-xl border border-white/10"
+                            >
                                 <ImageZoom
                                     className="block"
                                     zoomImg={{
@@ -70,9 +92,19 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                                         alt: image.alt ?? project.title,
                                     }}
                                 >
-                                    <Image src={src} alt={image.alt ?? project.title} width={900} height={600} className="h-full w-full object-cover" />
+                                    <Image
+                                        src={src}
+                                        alt={image.alt ?? project.title}
+                                        width={900}
+                                        height={600}
+                                        className="h-full w-full object-cover"
+                                    />
                                 </ImageZoom>
-                                {image.caption ? <p className="my-2 text-sm text-center text-muted-foreground">{image.caption}</p> : null}
+                                {image.caption ? (
+                                    <p className="my-2 text-sm text-center text-muted-foreground">
+                                        {image.caption}
+                                    </p>
+                                ) : null}
                             </div>
                         );
                     })}
@@ -81,7 +113,9 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
 
             {project.responsibilities?.length ? (
                 <div className="rounded-3xl border border-white/10 bg-white/5 px-6 py-6">
-                    <h2 className="font-heading text-2xl text-foreground">Responsibilities & highlights</h2>
+                    <h2 className="font-heading text-2xl text-foreground">
+                        Responsibilities & highlights
+                    </h2>
                     <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                         {project.responsibilities.map((item) => (
                             <li key={item} className="flex gap-2">
@@ -98,16 +132,23 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                     <h2 className="font-heading text-2xl text-foreground">Impact metrics</h2>
                     <div className="mt-4 grid gap-4 sm:grid-cols-2">
                         {project.metrics.map((metric) => (
-                            <div key={metric.label} className="rounded-2xl border border-white/10 bg-white/10 p-4">
+                            <div
+                                key={metric.label}
+                                className="rounded-2xl border border-white/10 bg-white/10 p-4"
+                            >
                                 <p className="text-sm text-muted-foreground">{metric.label}</p>
-                                <p className="font-heading text-2xl text-foreground">{metric.value}</p>
+                                <p className="font-heading text-2xl text-foreground">
+                                    {metric.value}
+                                </p>
                             </div>
                         ))}
                     </div>
                 </div>
             ) : null}
 
-            {project.links?.liveUrl || project.links?.caseStudyUrl || project.links?.repositoryUrl ? (
+            {project.links?.liveUrl ||
+            project.links?.caseStudyUrl ||
+            project.links?.repositoryUrl ? (
                 <div className="flex flex-wrap gap-3">
                     {project.links?.liveUrl ? (
                         <Button asChild>
@@ -118,14 +159,22 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                     ) : null}
                     {project.links?.repositoryUrl ? (
                         <Button asChild variant="outline">
-                            <Link href={project.links.repositoryUrl} target="_blank" rel="noreferrer">
+                            <Link
+                                href={project.links.repositoryUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 View repository
                             </Link>
                         </Button>
                     ) : null}
                     {project.links?.caseStudyUrl ? (
                         <Button asChild variant="ghost">
-                            <Link href={project.links.caseStudyUrl} target="_blank" rel="noreferrer">
+                            <Link
+                                href={project.links.caseStudyUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 Read full case study
                             </Link>
                         </Button>

@@ -1,4 +1,4 @@
-import { ProjectList } from "@/sanity/projects/types";
+import { ProjectList } from '@/sanity/projects/types';
 
 export interface ProjectsViewProps {
     projects: ProjectList[];

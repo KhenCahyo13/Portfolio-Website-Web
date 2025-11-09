@@ -6,7 +6,11 @@ import BlogDetails from './components/details';
 
 type RouteParams = { slug: string };
 
-export async function generateMetadata({ params }: { params: Promise<RouteParams> }): Promise<Metadata> {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<RouteParams>;
+}): Promise<Metadata> {
     const { slug } = await params;
 
     if (!slug) {

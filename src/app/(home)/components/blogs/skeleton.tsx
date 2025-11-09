@@ -1,8 +1,8 @@
-import { FC, Fragment } from "react";
-import { motion } from "motion/react";
-import { itemVariants } from "../../data";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
+import { FC, Fragment } from 'react';
+import { motion } from 'motion/react';
+import { itemVariants } from '../../data';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const skeletonItems = Array.from({ length: 3 });
 

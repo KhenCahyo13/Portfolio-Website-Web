@@ -1,6 +1,6 @@
-import { urlFor } from "@/lib/sanity";
-import { PortableTextComponents } from "@portabletext/react";
-import Image from "next/image";
+import { urlFor } from '@/lib/sanity';
+import { PortableTextComponents } from '@portabletext/react';
+import Image from 'next/image';
 
 export const portableComponents: PortableTextComponents = {
     types: {
@@ -17,7 +17,9 @@ export const portableComponents: PortableTextComponents = {
                         className="h-auto w-full object-cover"
                     />
                     {value.caption ? (
-                        <p className="px-4 py-2 text-center text-xs text-muted-foreground">{value.caption}</p>
+                        <p className="px-4 py-2 text-center text-xs text-muted-foreground">
+                            {value.caption}
+                        </p>
                     ) : null}
                 </div>
             );
@@ -50,11 +52,17 @@ export const portableComponents: PortableTextComponents = {
         ),
     },
     list: {
-        bullet: ({ children }) => <ul className="my-4 list-disc pl-6 text-muted-foreground">{children}</ul>,
-        number: ({ children }) => <ol className="my-4 list-decimal pl-6 text-muted-foreground">{children}</ol>,
+        bullet: ({ children }) => (
+            <ul className="my-4 list-disc pl-6 text-muted-foreground">{children}</ul>
+        ),
+        number: ({ children }) => (
+            <ol className="my-4 list-decimal pl-6 text-muted-foreground">{children}</ol>
+        ),
     },
     marks: {
-        strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+        strong: ({ children }) => (
+            <strong className="font-semibold text-foreground">{children}</strong>
+        ),
         em: ({ children }) => <em className="text-muted-foreground">{children}</em>,
         code: ({ children }) => (
             <code className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-primary-foreground/80">

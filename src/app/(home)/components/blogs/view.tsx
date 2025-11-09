@@ -1,4 +1,4 @@
-import { FC, memo, useMemo } from 'react';
+import { FC, memo } from 'react';
 import { motion } from 'motion/react';
 import { itemVariants, sectionVariants, staggerVariants } from '../../data';
 import { Badge } from '@/components/ui/badge';
@@ -12,10 +12,7 @@ import { BlogsViewProps } from './types';
 import BlogsSkeleton from './skeleton';
 import { EmptyDataFallback } from '@/components/fallback';
 
-const BlogsView: FC<BlogsViewProps> = ({
-    blogs,
-    isLoading
-}) => (
+const BlogsView: FC<BlogsViewProps> = ({ blogs, isLoading }) => (
     <motion.section
         id="blogs"
         variants={sectionVariants}
@@ -55,7 +52,9 @@ const BlogsView: FC<BlogsViewProps> = ({
                 ) : blogs.length > 0 ? (
                     blogs.map((blog) => {
                         const slugPath = blog.slug?.current ? `/blogs/${blog.slug.current}` : '#';
-                        const coverUrl = blog.coverImage ? urlFor(blog.coverImage).width(640).height(360).url() : null;
+                        const coverUrl = blog.coverImage
+                            ? urlFor(blog.coverImage).width(640).height(360).url()
+                            : null;
 
                         return (
                             <motion.div key={blog._id} variants={itemVariants}>
@@ -74,10 +73,15 @@ const BlogsView: FC<BlogsViewProps> = ({
                                     )}
                                     <CardHeader className="space-y-2 px-4">
                                         <CardDescription className="uppercase tracking-[0.3em] text-[0.65rem] text-muted-foreground">
-                                            {formatDate(blog.publishedAt)} {` • ${blog.readingTime} min read`}
+                                            {formatDate(blog.publishedAt)}{' '}
+                                            {` • ${blog.readingTime} min read`}
                                         </CardDescription>
-                                        <CardTitle className="text-lg text-foreground">{blog.title}</CardTitle>
-                                        <CardDescription>{blog.excerpt.slice(0, 90)}...</CardDescription>
+                                        <CardTitle className="text-lg text-foreground">
+                                            {blog.title}
+                                        </CardTitle>
+                                        <CardDescription>
+                                            {blog.excerpt.slice(0, 90)}...
+                                        </CardDescription>
                                     </CardHeader>
                                     <CardContent className="flex flex-1 flex-col gap-4 px-4 pb-6">
                                         {blog.tags?.length ? (
@@ -107,8 +111,7 @@ const BlogsView: FC<BlogsViewProps> = ({
                                 </Card>
                             </motion.div>
                         );
-                    },
-                    )
+                    })
                 ) : (
                     <EmptyDataFallback
                         title="No blog posts yet"

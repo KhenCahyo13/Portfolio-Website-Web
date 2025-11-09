@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface QueryFetcherParams {
     offset: number;
@@ -15,7 +15,7 @@ interface UseQueryOptions<T> {
     fetcher: (params: QueryFetcherParams) => Promise<T[]>;
 }
 
-export const useQuery = <T,>({ initialSearch = '', pageSize = 6, fetcher }: UseQueryOptions<T>) => {
+export const useQuery = <T>({ initialSearch = '', pageSize = 6, fetcher }: UseQueryOptions<T>) => {
     const [data, setData] = useState<T[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
@@ -54,7 +54,7 @@ export const useQuery = <T,>({ initialSearch = '', pageSize = 6, fetcher }: UseQ
                 };
                 const result = await fetcher(params);
                 if (ignore) return;
-                setData((prev) => (offset === 0 ? result ?? [] : [...prev, ...(result ?? [])]));
+                setData((prev) => (offset === 0 ? (result ?? []) : [...prev, ...(result ?? [])]));
                 setHasMore((result ?? []).length === pageSize);
             } catch (error) {
                 if (!ignore) {

@@ -26,7 +26,9 @@ const ProjectsView: FC<ProjectsViewProps> = ({ projects, isLoading }) => (
                 >
                     Projects
                 </Badge>
-                <h2 className="font-heading text-3xl text-foreground">Selected work and personal projects.</h2>
+                <h2 className="font-heading text-3xl text-foreground">
+                    Selected work and personal projects.
+                </h2>
                 <p className="text-sm text-muted-foreground md:text-base">
                     Fullstack engagements that highlight my range.
                 </p>
@@ -36,12 +38,16 @@ const ProjectsView: FC<ProjectsViewProps> = ({ projects, isLoading }) => (
             ) : projects.length > 0 ? (
                 <motion.div variants={staggerVariants} className="grid gap-6 md:grid-cols-2">
                     {projects.map((project) => {
-                        const slugPath = project.slug?.current ? `/projects/${project.slug.current}` : '#';
+                        const slugPath = project.slug?.current
+                            ? `/projects/${project.slug.current}`
+                            : '#';
                         return (
                             <motion.div key={project._id} variants={itemVariants}>
                                 <Card className="h-full border-white/15 bg-white/5">
                                     <CardHeader className="px-4">
-                                        <CardTitle className="text-2xl text-foreground">{project.title}</CardTitle>
+                                        <CardTitle className="text-2xl text-foreground">
+                                            {project.title}
+                                        </CardTitle>
                                         <CardDescription>{project.summary}</CardDescription>
                                     </CardHeader>
                                     <CardContent className="px-4">
@@ -58,7 +64,12 @@ const ProjectsView: FC<ProjectsViewProps> = ({ projects, isLoading }) => (
                                                 ))}
                                             </div>
                                         ) : null}
-                                        <Button asChild variant="link" className="mt-4 px-0 text-primary" disabled={slugPath === '#'}>
+                                        <Button
+                                            asChild
+                                            variant="link"
+                                            className="mt-4 px-0 text-primary"
+                                            disabled={slugPath === '#'}
+                                        >
                                             <Link href={slugPath}>Dive into details →</Link>
                                         </Button>
                                     </CardContent>
@@ -73,7 +84,11 @@ const ProjectsView: FC<ProjectsViewProps> = ({ projects, isLoading }) => (
                 </div>
             )}
             <div className="flex justify-center">
-                <Button asChild variant="outline" className="w-full border-white/20 bg-transparent text-xs uppercase tracking-[0.3em] text-muted-foreground md:w-auto">
+                <Button
+                    asChild
+                    variant="outline"
+                    className="w-full border-white/20 bg-transparent text-xs uppercase tracking-[0.3em] text-muted-foreground md:w-auto"
+                >
                     <Link href="/projects">See all projects →</Link>
                 </Button>
             </div>

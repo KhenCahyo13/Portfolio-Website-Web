@@ -69,9 +69,13 @@ export const SplashScreen: FC = () => {
                 className="relative z-10 flex flex-col items-center gap-4 text-center"
             >
                 <div className="space-y-2">
-                    <span className="text-xs uppercase tracking-[0.5em] text-white/60">Portfolio</span>
+                    <span className="text-xs uppercase tracking-[0.5em] text-white/60">
+                        Portfolio
+                    </span>
                     <h1 className="font-heading text-3xl text-white md:text-4xl">Khen Cahyo</h1>
-                    <p className="text-sm text-white/60 md:text-base">Building reliable digital experiences.</p>
+                    <p className="text-sm text-white/60 md:text-base">
+                        Building reliable digital experiences.
+                    </p>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-white/70">
                     <Loader2 className="size-6 animate-spin text-primary" />

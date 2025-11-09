@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const CollaborationView: FC = () => (
     <motion.section
-        id='collaboration'
+        id="collaboration"
         variants={sectionVariants}
         initial="hidden"
         whileInView="show"
@@ -39,7 +39,9 @@ const CollaborationView: FC = () => (
                     size="lg"
                     className="border-white/30 text-foreground"
                 >
-                    <Link href="/documents/KhenCahyo-CVATS.pdf" target='__blank'>Download My Resume</Link>
+                    <Link href="/documents/KhenCahyo-CVATS.pdf" target="__blank">
+                        Download My Resume
+                    </Link>
                 </Button>
             </div>
         </div>

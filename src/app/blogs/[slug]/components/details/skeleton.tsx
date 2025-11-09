@@ -21,7 +21,10 @@ const BlogDetailsSkeleton: FC = () => (
             </CardHeader>
             <CardContent className="space-y-4 px-6 pb-8">
                 {Array.from({ length: 6 }).map((_, index) => (
-                    <Skeleton key={`line-${index}`} className="h-4 w-full rounded-full bg-white/10" />
+                    <Skeleton
+                        key={`line-${index}`}
+                        className="h-4 w-full rounded-full bg-white/10"
+                    />
                 ))}
             </CardContent>
         </Card>

@@ -31,8 +31,9 @@ const HeroView: FC = () => (
                         Helping teams build reliable products end-to-end across web and mobile.
                     </h1>
                     <p className="max-w-2xl text-sm text-muted-foreground md:text-base">
-                        I&apos;m Khen Muhammad Cahyo—undergraduate student from State Polytechnic of Malang and Fullstack Developer with {new Date().getFullYear() - 2022}+ years of
-                        experience working as a frontend engineer, backend engineer, mentor, and
+                        I&apos;m Khen Muhammad Cahyo—undergraduate student from State Polytechnic of
+                        Malang and Fullstack Developer with {new Date().getFullYear() - 2022}+ years
+                        of experience working as a frontend engineer, backend engineer, mentor, and
                         engineer lead. I thrive in cross-functional squads where clear communication
                         and hands-on shipping matter most.
                     </p>

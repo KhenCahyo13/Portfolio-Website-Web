@@ -1,4 +1,4 @@
-import { SanityImage, SanityRichContent, SanitySeo, SanitySlug } from "@/types/sanity";
+import { SanityImage, SanityRichContent, SanitySeo, SanitySlug } from '@/types/sanity';
 
 export interface BlogList {
     _id: string;
@@ -10,7 +10,7 @@ export interface BlogList {
     slug: SanitySlug;
     tags: string[];
     coverImage: SanityImage;
-};
+}
 
 export interface BlogDetails extends BlogList {
     author: string;

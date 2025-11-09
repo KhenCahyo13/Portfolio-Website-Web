@@ -10,7 +10,17 @@ import { client } from '@/lib/sanity';
 
 const BlogList: FC<BlogListProps> = ({ initialQuery = '' }) => {
     const fetcher = useCallback(
-        async ({ offset, limit, search, filters }: { offset: number; limit: number; search: string; filters: string[] }) => {
+        async ({
+            offset,
+            limit,
+            search,
+            filters,
+        }: {
+            offset: number;
+            limit: number;
+            search: string;
+            filters: string[];
+        }) => {
             const params = {
                 offset,
                 limit,
@@ -19,14 +29,15 @@ const BlogList: FC<BlogListProps> = ({ initialQuery = '' }) => {
             };
             return client.fetch<BlogListType[]>(blogListQuery, params);
         },
-        []
+        [],
     );
 
-    const { data, isLoading, hasMore, search, setSearch, filters, setFilters, loadMore, reset } = useQuery<BlogListType>({
-        initialSearch: initialQuery,
-        pageSize: 6,
-        fetcher,
-    });
+    const { data, isLoading, hasMore, search, setSearch, filters, setFilters, loadMore, reset } =
+        useQuery<BlogListType>({
+            initialSearch: initialQuery,
+            pageSize: 6,
+            fetcher,
+        });
 
     useEffect(() => {
         reset(initialQuery);

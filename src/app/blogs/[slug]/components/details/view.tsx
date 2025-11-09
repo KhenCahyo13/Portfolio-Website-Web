@@ -10,18 +10,24 @@ import { urlFor } from '@/lib/sanity';
 import { portableComponents } from '@/components/portable';
 import { BlogDetailsViewProps } from './types';
 
-const BlogDetailsView: FC<BlogDetailsViewProps> = ({
-    blog
-}) => {
-    const coverUrl = useMemo(() => (blog.coverImage ? urlFor(blog.coverImage).width(1400).height(720).url() : null), [blog.coverImage]);
+const BlogDetailsView: FC<BlogDetailsViewProps> = ({ blog }) => {
+    const coverUrl = useMemo(
+        () => (blog.coverImage ? urlFor(blog.coverImage).width(1400).height(720).url() : null),
+        [blog.coverImage],
+    );
 
     return (
         <section className="mx-auto w-full max-w-5xl space-y-10 py-16">
             <div className="space-y-5">
-                <Badge variant="outline" className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]">
+                <Badge
+                    variant="outline"
+                    className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]"
+                >
                     Blog
                 </Badge>
-                <h1 className="font-heading text-4xl leading-tight text-foreground md:text-5xl">{blog.title}</h1>
+                <h1 className="font-heading text-4xl leading-tight text-foreground md:text-5xl">
+                    {blog.title}
+                </h1>
                 <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
                     <span>by {blog.author}</span>
                     <span>• {formatDate(blog.publishedAt)}</span>

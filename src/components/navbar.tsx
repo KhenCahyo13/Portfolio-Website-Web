@@ -44,7 +44,9 @@ const getSectionId = (href: string) => href.replace('#', '') || 'home';
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState<string>(getSectionId(sectionNavItems[0].href));
+    const [activeSection, setActiveSection] = useState<string>(
+        getSectionId(sectionNavItems[0].href),
+    );
     const pathname = usePathname();
     const isHome = useMemo(() => pathname === '/', [pathname]);
 
@@ -87,11 +89,26 @@ export const Navbar = () => {
         >
             {isActive && (
                 <Fragment>
-                    <span className="pointer-events-none absolute inset-0 rounded border border-dashed border-primary/60" aria-hidden />
-                    <span className="pointer-events-none absolute -top-1 -left-1 h-2 w-2 border-l border-t border-primary" aria-hidden />
-                    <span className="pointer-events-none absolute -top-1 -right-1 h-2 w-2 border-r border-t border-primary" aria-hidden />
-                    <span className="pointer-events-none absolute -bottom-1 -left-1 h-2 w-2 border-l border-b border-primary" aria-hidden />
-                    <span className="pointer-events-none absolute -bottom-1 -right-1 h-2 w-2 border-r border-b border-primary" aria-hidden />
+                    <span
+                        className="pointer-events-none absolute inset-0 rounded border border-dashed border-primary/60"
+                        aria-hidden
+                    />
+                    <span
+                        className="pointer-events-none absolute -top-1 -left-1 h-2 w-2 border-l border-t border-primary"
+                        aria-hidden
+                    />
+                    <span
+                        className="pointer-events-none absolute -top-1 -right-1 h-2 w-2 border-r border-t border-primary"
+                        aria-hidden
+                    />
+                    <span
+                        className="pointer-events-none absolute -bottom-1 -left-1 h-2 w-2 border-l border-b border-primary"
+                        aria-hidden
+                    />
+                    <span
+                        className="pointer-events-none absolute -bottom-1 -right-1 h-2 w-2 border-r border-b border-primary"
+                        aria-hidden
+                    />
                 </Fragment>
             )}
             {label}

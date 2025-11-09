@@ -7,10 +7,12 @@ type PageProps = {
 
 export const metadata: Metadata = {
     title: 'Blogs | Khen Muhammad Cahyo',
-    description: 'Articles and notes on fullstack development, system design, and engineering leadership by Khen Muhammad Cahyo.',
+    description:
+        'Articles and notes on fullstack development, system design, and engineering leadership by Khen Muhammad Cahyo.',
     openGraph: {
         title: 'Blogs | Khen Muhammad Cahyo',
-        description: 'Articles and notes on fullstack development, system design, and engineering leadership.',
+        description:
+            'Articles and notes on fullstack development, system design, and engineering leadership.',
         type: 'website',
     },
     twitter: {

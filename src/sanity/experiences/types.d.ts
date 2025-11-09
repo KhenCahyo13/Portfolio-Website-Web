@@ -1,4 +1,4 @@
-import { SanityImage, SanityRichContent } from "@/types/sanity";
+import { SanityImage, SanityRichContent } from '@/types/sanity';
 
 export interface ExperienceList {
     _id: string;
@@ -14,4 +14,4 @@ export interface ExperienceList {
     location: string;
     role: string;
     summary: SanityRichContent;
-};
+}

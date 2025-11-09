@@ -43,10 +43,7 @@ const Blogs: FC = () => {
         };
     }, []);
 
-    return <BlogsView
-        blogs={safeBlogs}
-        isLoading={isLoading}
-    />;
+    return <BlogsView blogs={safeBlogs} isLoading={isLoading} />;
 };
 
 export default Blogs;

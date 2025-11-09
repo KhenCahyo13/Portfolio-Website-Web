@@ -1,17 +1,15 @@
-"use client";
+'use client';
 
-import { client } from "@/lib/sanity";
-import { blogDetailsQuery } from "@/sanity/blogs/api";
-import { BlogDetails as BlogDetailsType } from "@/sanity/blogs/types";
-import { FC, memo, useEffect, useState } from "react";
+import { client } from '@/lib/sanity';
+import { blogDetailsQuery } from '@/sanity/blogs/api';
+import { BlogDetails as BlogDetailsType } from '@/sanity/blogs/types';
+import { FC, memo, useEffect, useState } from 'react';
 import BlogDetailsView from './view';
-import { BlogDetailsPageProps } from "./types";
-import BlogDetailsSkeleton from "./skeleton";
-import { EmptyDataFallback } from "@/components/fallback";
+import { BlogDetailsPageProps } from './types';
+import BlogDetailsSkeleton from './skeleton';
+import { EmptyDataFallback } from '@/components/fallback';
 
-const BlogDetails: FC<BlogDetailsPageProps> = ({
-    slug
-}) => {
+const BlogDetails: FC<BlogDetailsPageProps> = ({ slug }) => {
     const [blog, setBlog] = useState<BlogDetailsType | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -27,7 +25,9 @@ const BlogDetails: FC<BlogDetailsPageProps> = ({
         const fetchBlog = async () => {
             try {
                 setIsLoading(true);
-                const data = await client.fetch<BlogDetailsType | null>(blogDetailsQuery, { slug: slug });
+                const data = await client.fetch<BlogDetailsType | null>(blogDetailsQuery, {
+                    slug: slug,
+                });
                 if (mounted) {
                     setBlog(data ?? null);
                 }
@@ -57,12 +57,15 @@ const BlogDetails: FC<BlogDetailsPageProps> = ({
     if (!blog) {
         return (
             <section className="px-6 py-16 md:px-12">
-                <EmptyDataFallback title="Article not found" description="This article might be private or has been removed." />
+                <EmptyDataFallback
+                    title="Article not found"
+                    description="This article might be private or has been removed."
+                />
             </section>
         );
     }
 
     return <BlogDetailsView blog={blog} />;
-}
+};
 
 export default memo(BlogDetails);

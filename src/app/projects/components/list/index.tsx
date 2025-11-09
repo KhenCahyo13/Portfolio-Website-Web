@@ -12,9 +12,21 @@ const PAGE_SIZE = 6;
 
 const ProjectListContainer: FC<ProjectListProps> = ({ initialQuery = '' }) => {
     const fetcher = useCallback(
-        async ({ offset, limit, search, filters }: { offset: number; limit: number; search: string; filters: string[] }) => {
-            const statusFilter = filters.find((item) => item.startsWith('status:'))?.split(':')[1] ?? '';
-            const techFilter = filters.find((item) => item.startsWith('tech:'))?.split(':')[1] ?? '';
+        async ({
+            offset,
+            limit,
+            search,
+            filters,
+        }: {
+            offset: number;
+            limit: number;
+            search: string;
+            filters: string[];
+        }) => {
+            const statusFilter =
+                filters.find((item) => item.startsWith('status:'))?.split(':')[1] ?? '';
+            const techFilter =
+                filters.find((item) => item.startsWith('tech:'))?.split(':')[1] ?? '';
 
             return client.fetch<ProjectList[]>(projectListQuery, {
                 offset,
@@ -27,11 +39,12 @@ const ProjectListContainer: FC<ProjectListProps> = ({ initialQuery = '' }) => {
         [],
     );
 
-    const { data, isLoading, hasMore, search, setSearch, filters, setFilters, loadMore, reset } = useQuery<ProjectList>({
-        initialSearch: initialQuery,
-        pageSize: PAGE_SIZE,
-        fetcher,
-    });
+    const { data, isLoading, hasMore, search, setSearch, filters, setFilters, loadMore, reset } =
+        useQuery<ProjectList>({
+            initialSearch: initialQuery,
+            pageSize: PAGE_SIZE,
+            fetcher,
+        });
 
     useEffect(() => {
         reset(initialQuery);

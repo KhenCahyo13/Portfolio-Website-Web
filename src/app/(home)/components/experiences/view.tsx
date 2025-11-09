@@ -2,9 +2,14 @@ import { FC } from 'react';
 import { motion } from 'motion/react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { itemVariants, sectionVariants } from '../../data';
+import { sectionVariants } from '../../data';
 import { ExperiencesViewProps } from './types';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion';
 import { PortableText } from '@portabletext/react';
 import { portableComponents } from '@/components/portable';
 import ExperiencesSkeleton from './skeleton';
@@ -63,7 +68,11 @@ const ExperiencesView: FC<ExperiencesViewProps> = ({ experiences, isLoading }) =
                                             <CardTitle className="flex flex-col gap-1 text-xl text-foreground sm:flex-row sm:items-center sm:justify-between">
                                                 <span>{exp.role}</span>
                                                 <span className="text-sm font-normal text-muted-foreground">
-                                                    {formatPeriod(exp.startDate, exp.endDate, exp.isCurrent)}
+                                                    {formatPeriod(
+                                                        exp.startDate,
+                                                        exp.endDate,
+                                                        exp.isCurrent,
+                                                    )}
                                                 </span>
                                             </CardTitle>
                                             <CardDescription className="text-muted-foreground capitalize">
@@ -75,13 +84,19 @@ const ExperiencesView: FC<ExperiencesViewProps> = ({ experiences, isLoading }) =
                                         <CardContent className="space-y-4 px-4 pb-6">
                                             {exp.summary ? (
                                                 <div className="prose prose-invert max-w-none text-sm">
-                                                    <PortableText value={exp.summary} components={portableComponents} />
+                                                    <PortableText
+                                                        value={exp.summary}
+                                                        components={portableComponents}
+                                                    />
                                                 </div>
                                             ) : null}
                                             {exp.highlights?.length ? (
                                                 <ul className="space-y-2 text-sm text-muted-foreground">
                                                     {exp.highlights.map((highlight) => (
-                                                        <li key={highlight} className="flex items-start gap-2">
+                                                        <li
+                                                            key={highlight}
+                                                            className="flex items-start gap-2"
+                                                        >
                                                             <span className="mt-1 size-1 rounded-full bg-primary" />
                                                             <span>{highlight}</span>
                                                         </li>

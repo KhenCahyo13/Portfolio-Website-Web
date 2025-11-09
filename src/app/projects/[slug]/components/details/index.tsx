@@ -19,7 +19,9 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({ slug }) => {
         const fetchProject = async () => {
             try {
                 setIsLoading(true);
-                const data = await client.fetch<ProjectDetailsType | null>(projectDetailsQuery, { slug });
+                const data = await client.fetch<ProjectDetailsType | null>(projectDetailsQuery, {
+                    slug,
+                });
                 if (mounted) {
                     setProject(data ?? null);
                 }
@@ -45,7 +47,10 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({ slug }) => {
     if (!project) {
         return (
             <section className="px-6 py-16 md:px-12">
-                <EmptyDataFallback title="Project not found" description="This case study might be private or has been removed." />
+                <EmptyDataFallback
+                    title="Project not found"
+                    description="This case study might be private or has been removed."
+                />
             </section>
         );
     }

@@ -6,7 +6,7 @@ export interface SanityImage {
     asset: {
         _ref: string;
         _type: string;
-    }
+    };
 }
 
 export interface SanitySlug {
@@ -25,13 +25,13 @@ export interface SanityRichTextChild {
     _type: 'span';
     marks: string[];
     text: string;
-};
+}
 
 export interface SanityRichTextMarkDef {
     _key: string;
     _type: string;
     [key: string]: unknown;
-};
+}
 
 export interface SanityRichBlock {
     _key: string;
@@ -41,7 +41,7 @@ export interface SanityRichBlock {
     level?: number;
     markDefs: SanityRichTextMarkDef[];
     children: SanityRichTextChild[];
-};
+}
 
 export interface SanityRichImageBlock {
     _key: string;
@@ -52,7 +52,7 @@ export interface SanityRichImageBlock {
         _ref: string;
         _type: 'reference';
     };
-};
+}
 
 export type SanityRichContentItem = SanityRichBlock | SanityRichImageBlock | SanityCodeBlock;
 
