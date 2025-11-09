@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { itemVariants, sectionVariants, staggerVariants } from '@/app/(home)/data';
 import { formatDate } from '@/lib/datetime';
 import { urlFor } from '@/lib/sanity';
+import { cn } from '@/lib/utils';
 import { ProjectListViewProps } from './types';
 import ProjectListSkeleton from './skeleton';
 import { EmptyDataFallback } from '@/components/fallback';
@@ -46,7 +48,7 @@ const ProjectListView: FC<ProjectListViewProps> = ({
                     </p>
                 </div>
                 <div className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-4">
-                    <input
+                    <Input
                         type="text"
                         value={searchTerm}
                         onChange={(e) => onSearchChange(e.target.value)}
@@ -55,40 +57,46 @@ const ProjectListView: FC<ProjectListViewProps> = ({
                     />
                     <div className="flex flex-wrap gap-2">
                         {statusOptions.map((status) => (
-                            <button
+                            <Button
                                 key={status.value || 'all'}
                                 type="button"
+                                variant="outline"
                                 onClick={() => onStatusChange(status.value)}
-                                className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition ${
+                                className={cn(
+                                    'h-auto rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition',
                                     activeStatus === status.value ? 'border-primary text-primary' : 'border-white/15 text-muted-foreground'
-                                }`}
+                                )}
                             >
                                 {status.label}
-                            </button>
+                            </Button>
                         ))}
                     </div>
                     {availableTechs.length ? (
                         <div className="flex flex-wrap gap-2">
-                            <button
+                            <Button
                                 type="button"
+                                variant="outline"
                                 onClick={() => onTechChange('')}
-                                className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition ${
+                                className={cn(
+                                    'h-auto rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition',
                                     activeTech === '' ? 'border-primary text-primary' : 'border-white/15 text-muted-foreground'
-                                }`}
+                                )}
                             >
                                 All tech
-                            </button>
+                            </Button>
                             {availableTechs.map((tech) => (
-                                <button
+                                <Button
                                     key={tech}
                                     type="button"
+                                    variant="outline"
                                     onClick={() => onTechChange(tech)}
-                                    className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition ${
+                                    className={cn(
+                                        'h-auto rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition',
                                         activeTech === tech ? 'border-primary text-primary' : 'border-white/15 text-muted-foreground'
-                                    }`}
+                                    )}
                                 >
                                     {tech}
-                                </button>
+                                </Button>
                             ))}
                         </div>
                     ) : null}

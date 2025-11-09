@@ -66,7 +66,7 @@ const ExperiencesView: FC<ExperiencesViewProps> = ({ experiences, isLoading }) =
                                                     {formatPeriod(exp.startDate, exp.endDate, exp.isCurrent)}
                                                 </span>
                                             </CardTitle>
-                                            <CardDescription className="text-muted-foreground">
+                                            <CardDescription className="text-muted-foreground capitalize">
                                                 {metaPieces.join(' · ')}
                                             </CardDescription>
                                         </CardHeader>

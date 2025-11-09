@@ -3,7 +3,7 @@ import StackIcon from 'tech-stack-icons';
 export const heroHighlights = [
     {
         label: 'Years shipping',
-        value: '3+',
+        value: `${new Date().getFullYear() - 2022}+`,
     },
     {
         label: 'Products launched',

@@ -73,7 +73,7 @@ const ProjectsView: FC<ProjectsViewProps> = ({ projects, isLoading }) => (
                 </div>
             )}
             <div className="flex justify-center">
-                <Button asChild variant="outline" className="border-white/20 bg-transparent text-xs uppercase tracking-[0.3em]">
+                <Button asChild variant="outline" className="w-full border-white/20 bg-transparent text-xs uppercase tracking-[0.3em] text-muted-foreground md:w-auto">
                     <Link href="/projects">See all projects →</Link>
                 </Button>
             </div>

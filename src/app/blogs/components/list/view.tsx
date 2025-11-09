@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { itemVariants, sectionVariants, staggerVariants } from '@/app/(home)/data';
 import { formatDate } from '@/lib/datetime';
 import { urlFor } from '@/lib/sanity';
+import { cn } from '@/lib/utils';
 import { BlogListViewProps } from './types';
 import BlogListSkeleton from './skeleton';
 import { EmptyDataFallback } from '@/components/fallback';
@@ -36,7 +38,7 @@ const BlogListView: FC<BlogListViewProps> = ({
                     </p>
                 </div>
                 <div className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-4">
-                    <input
+                    <Input
                         type="text"
                         value={searchTerm}
                         onChange={(e) => onSearchChange(e.target.value)}
@@ -45,26 +47,30 @@ const BlogListView: FC<BlogListViewProps> = ({
                     />
                     {availableTags.length ? (
                         <div className="flex flex-wrap gap-2">
-                            <button
+                            <Button
                                 type="button"
+                                variant="outline"
                                 onClick={() => onTagChange('')}
-                                className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition ${
+                                className={cn(
+                                    'h-auto rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition',
                                     !activeTag ? 'border-primary text-primary' : 'border-white/15 text-muted-foreground'
-                                }`}
+                                )}
                             >
                                 All
-                            </button>
+                            </Button>
                             {availableTags.map((tag) => (
-                                <button
+                                <Button
                                     key={tag}
                                     type="button"
+                                    variant="outline"
                                     onClick={() => onTagChange(tag)}
-                                    className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition ${
+                                    className={cn(
+                                        'h-auto rounded-full border px-3 py-1 text-xs uppercase tracking-[0.3em] transition',
                                         activeTag === tag ? 'border-primary text-primary' : 'border-white/15 text-muted-foreground'
-                                    }`}
+                                    )}
                                 >
                                     {tag}
-                                </button>
+                                </Button>
                             ))}
                         </div>
                     ) : null}
