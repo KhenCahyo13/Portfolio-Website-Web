@@ -46,7 +46,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
             </div>
 
             {heroUrl ? (
-                <div className="relative overflow-hidden rounded-4xl border border-white/10">
+                <div className="relative overflow-hidden border rounded-xl border-white/10 md:rounded-4xl">
                     <Image src={heroUrl} alt={project.title} width={1400} height={720} priority className="h-auto w-full object-cover" />
                 </div>
             ) : null}
@@ -58,7 +58,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
             </Card>
 
             {project.gallery?.length ? (
-                <div className="grid gap-6 md:grid-cols-5">
+                <div className="grid gap-6 md:grid-cols-4">
                     {project.gallery.map((image) => {
                         const src = urlFor(image).width(284).height(600).url();
                         return (
@@ -72,6 +72,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                                 >
                                     <Image src={src} alt={image.alt ?? project.title} width={900} height={600} className="h-full w-full object-cover" />
                                 </ImageZoom>
+                                {image.caption ? <p className="my-2 text-sm text-center text-muted-foreground">{image.caption}</p> : null}
                             </div>
                         );
                     })}

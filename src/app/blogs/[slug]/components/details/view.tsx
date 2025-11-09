@@ -43,7 +43,7 @@ const BlogDetailsView: FC<BlogDetailsViewProps> = ({
             </div>
 
             {coverUrl ? (
-                <div className="relative overflow-hidden rounded-4xl border border-white/10">
+                <div className="relative overflow-hidden rounded-xl border border-white/10 md:rounded-4xl">
                     <Image
                         src={coverUrl}
                         alt={blog.title}

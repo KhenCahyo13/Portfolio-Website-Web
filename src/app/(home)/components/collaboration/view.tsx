@@ -29,7 +29,7 @@ const CollaborationView: FC = () => (
                 Send over a short brief with goals, timeline, and team context. I&apos;ll reply
                 within a day with a plan on how I can help.
             </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 md:flex-row md:flex-wrap">
                 <Button asChild size="lg">
                     <Link href="mailto:khencahyo02@gmail.com">Email me</Link>
                 </Button>
