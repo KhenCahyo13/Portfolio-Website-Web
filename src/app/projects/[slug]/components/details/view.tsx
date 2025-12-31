@@ -77,9 +77,9 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
             </Card>
 
             {project.gallery?.length ? (
-                <div className="grid gap-6 md:grid-cols-4">
+                <div className="grid gap-4 md:grid-cols-2">
                     {project.gallery.map((image) => {
-                        const src = urlFor(image).width(284).height(600).url();
+                        const src = urlFor(image).url();
                         return (
                             <div
                                 key={image._key ?? src}
@@ -114,7 +114,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
             {project.responsibilities?.length ? (
                 <div className="rounded-3xl border border-white/10 bg-white/5 px-6 py-6">
                     <h2 className="font-heading text-2xl text-foreground">
-                        Responsibilities & highlights
+                        Responsibilities & Highlights
                     </h2>
                     <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                         {project.responsibilities.map((item) => (
@@ -129,7 +129,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
 
             {project.metrics?.length ? (
                 <div className="rounded-3xl border border-white/10 bg-white/5 px-6 py-6">
-                    <h2 className="font-heading text-2xl text-foreground">Impact metrics</h2>
+                    <h2 className="font-heading text-2xl text-foreground">Impact Metrics</h2>
                     <div className="mt-4 grid gap-4 sm:grid-cols-2">
                         {project.metrics.map((metric) => (
                             <div
@@ -153,7 +153,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                     {project.links?.liveUrl ? (
                         <Button asChild>
                             <Link href={project.links.liveUrl} target="_blank" rel="noreferrer">
-                                Visit live site
+                                Visit Live Site
                             </Link>
                         </Button>
                     ) : null}
@@ -164,7 +164,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                View repository
+                                View Repository
                             </Link>
                         </Button>
                     ) : null}
@@ -175,7 +175,7 @@ const ProjectDetailsView: FC<ProjectDetailsViewProps> = ({ project }) => {
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                Read full case study
+                                Read Full Case Study
                             </Link>
                         </Button>
                     ) : null}

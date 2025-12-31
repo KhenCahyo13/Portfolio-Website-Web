@@ -154,7 +154,7 @@ const BlogListView: FC<BlogListViewProps> = ({
                                             className="px-0 text-primary"
                                             disabled={slugPath === '#'}
                                         >
-                                            <Link href={slugPath}>Continue reading →</Link>
+                                            <Link href={slugPath}>Continue Reading →</Link>
                                         </Button>
                                     </CardContent>
                                 </Card>

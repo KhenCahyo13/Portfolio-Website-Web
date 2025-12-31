@@ -50,6 +50,9 @@ export const portableComponents: PortableTextComponents = {
         h4: ({ children }) => (
             <h4 className="mt-8 text-lg font-semibold text-foreground">{children}</h4>
         ),
+        h5: ({ children }) => (
+            <h5 className="mt-6 text-base font-semibold text-foreground">{children}</h5>
+        ),
     },
     list: {
         bullet: ({ children }) => (

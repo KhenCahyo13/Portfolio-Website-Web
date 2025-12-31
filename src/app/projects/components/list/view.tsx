@@ -140,13 +140,13 @@ const ProjectListView: FC<ProjectListViewProps> = ({
                             <motion.div key={project._id} variants={itemVariants}>
                                 <Card className="flex h-full flex-col border-white/15 bg-white/5 py-0">
                                     {imageUrl && (
-                                        <div className="relative h-48 w-full overflow-hidden rounded-t-xl border-b border-white/10">
+                                        <div className="relative h-48 w-full overflow-hidden rounded-t-xl border-b border-white/10 bg-primary">
                                             <Image
                                                 src={imageUrl}
                                                 alt={project.title}
                                                 fill
                                                 sizes="(max-width: 768px) 100vw, 50vw"
-                                                className="object-cover"
+                                                className="object-contain object-center"
                                             />
                                         </div>
                                     )}
@@ -184,7 +184,7 @@ const ProjectListView: FC<ProjectListViewProps> = ({
                                             className="mt-4 px-0 text-primary"
                                             disabled={slugPath === '#'}
                                         >
-                                            <Link href={slugPath}>View case study →</Link>
+                                            <Link href={slugPath}>View Case Study →</Link>
                                         </Button>
                                     </CardContent>
                                 </Card>

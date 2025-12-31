@@ -70,7 +70,7 @@ const ProjectsView: FC<ProjectsViewProps> = ({ projects, isLoading }) => (
                                             className="mt-4 px-0 text-primary"
                                             disabled={slugPath === '#'}
                                         >
-                                            <Link href={slugPath}>Dive into details →</Link>
+                                            <Link href={slugPath}>Dive Into Details →</Link>
                                         </Button>
                                     </CardContent>
                                 </Card>
