@@ -17,7 +17,7 @@ const Blogs: FC = () => {
                 setIsLoading(true);
                 const data = await client.fetch<BlogList[]>(blogListQuery, {
                     offset: 0,
-                    limit: 3,
+                    limit: 4,
                     search: '',
                     tags: [],
                 });

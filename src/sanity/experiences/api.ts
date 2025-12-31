@@ -1,5 +1,5 @@
 export const experiencesListQuery = `
-*[_type == "experiences"] | order(startDate desc){
+*[_type == "experiences"] | order(orderRank desc){
     _id,
     company,
     logo,
@@ -12,5 +12,6 @@ export const experiencesListQuery = `
     isCurrent,
     summary,
     highlights,
-    techStack
+    techStack,
+    orderRank
 }`;

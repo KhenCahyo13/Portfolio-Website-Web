@@ -81,7 +81,7 @@ const ExperiencesView: FC<ExperiencesViewProps> = ({ experiences, isLoading }) =
                                         </CardHeader>
                                     </AccordionTrigger>
                                     <AccordionContent className="px-0">
-                                        <CardContent className="space-y-4 px-4 pb-6">
+                                        <CardContent className="gap-y-4 px-4 pb-0">
                                             {exp.summary ? (
                                                 <div className="prose prose-invert max-w-none text-sm">
                                                     <PortableText
@@ -89,19 +89,6 @@ const ExperiencesView: FC<ExperiencesViewProps> = ({ experiences, isLoading }) =
                                                         components={portableComponents}
                                                     />
                                                 </div>
-                                            ) : null}
-                                            {exp.highlights?.length ? (
-                                                <ul className="space-y-2 text-sm text-muted-foreground">
-                                                    {exp.highlights.map((highlight) => (
-                                                        <li
-                                                            key={highlight}
-                                                            className="flex items-start gap-2"
-                                                        >
-                                                            <span className="mt-1 size-1 rounded-full bg-primary" />
-                                                            <span>{highlight}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
                                             ) : null}
                                             {exp.techStack?.length ? (
                                                 <div className="flex flex-wrap gap-2">
